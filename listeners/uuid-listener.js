@@ -2,7 +2,7 @@
  * Created by rolando on 13/04/2018.
  */
 const amqp = require('amqplib');
-import config from '../config';
+const config = require('../config');
 
 class UuidListener {
     constructor(rabbitUrl, ingestClient) {
@@ -29,4 +29,4 @@ class UuidListener {
 
 }
 
-export default UuidListener;
+module.exports = {UuidListener};

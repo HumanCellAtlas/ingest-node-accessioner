@@ -1,6 +1,6 @@
 /**
  * Created by rolando on 13/04/2018.
  */
-import UuidListener from './uuid-listener';
+const UuidListener = require('./uuid-listener');
 
-export {UuidListener};
+module.exports = {UuidListener};

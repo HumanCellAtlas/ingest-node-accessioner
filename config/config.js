@@ -1,8 +1,8 @@
 /**
  * Created by rolando on 13/04/2018.
  */
-import {IngestClient} from '../client';
-import {UuidListener} from '../listeners';
+const IngestClient = require('../client');
+const UuidListener = require('../listeners');
 
 const config = {
     // config vars
@@ -21,4 +21,4 @@ const config = {
     }
 };
 
-export default config;
+module.exports = {config};

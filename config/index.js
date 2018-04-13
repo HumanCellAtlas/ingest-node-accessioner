@@ -1,5 +1,5 @@
 /**
  * Created by rolando on 13/04/2018.
  */
-import config from './config';
-export {config};
+const config = require('./config');
+module.exports = {config};
