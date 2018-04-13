@@ -29,4 +29,4 @@ class UuidListener {
 
 }
 
-module.exports = {UuidListener};
+module.exports = UuidListener;

@@ -41,4 +41,4 @@ class IngestClient {
     }
 }
 
-module.exports = {IngestClient};
+module.exports = IngestClient;

@@ -3,4 +3,4 @@
  */
 const UuidListener = require('./uuid-listener');
 
-module.exports = {UuidListener};
+module.exports = UuidListener;

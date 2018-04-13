@@ -3,4 +3,4 @@
  */
 const IngestClient = require('./ingest-client');
 
-module.exports = {IngestClient};
+module.exports = IngestClient;
