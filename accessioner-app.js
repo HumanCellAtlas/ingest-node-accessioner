@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
 // start the listeners
-const config = require('../config');
+const config = require("./src/config/config.js")
 config.services.uuidListener.start();

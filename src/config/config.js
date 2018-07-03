@@ -9,7 +9,7 @@ class _Config {
     constructor(){
         this.services = {};
         this.services.ingestClient = new IngestClient('http://' + properties.vars.INGEST_HOST + ':' + properties.vars.INGEST_PORT);
-        this.services.uuidListener =  new UuidListener('amqp://' + properties.vars.RABBIT_HOST + "/" + properties.vars.RABBIT_PORT, this.services.ingestClient);
+        this.services.uuidListener =  new UuidListener(properties.vars.RABBIT_URL, this.services.ingestClient);
     }
 }
 
