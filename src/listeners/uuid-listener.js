@@ -20,7 +20,7 @@ class UuidListener {
                 ch.assertQueue(this.properties.vars.UUID_QUEUE, {durable: false}).then(() => {
                     ch.prefetch(this.properties.vars.PREFETCH_COUNT).then(() => {
                         ch.consume(this.properties.vars.UUID_QUEUE, (msg) => {
-                            callbackLink = JSON.parse(msg.content)['callbackLink'];
+                            let callbackLink = JSON.parse(msg.content)['callbackLink'];
                             this.ingestClient.assignUuid(callbackLink);
                         }, {noAck : true});
                     })
