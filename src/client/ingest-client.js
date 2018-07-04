@@ -29,6 +29,8 @@ class IngestClient {
                         url: entityUrl
                     }).then((patchReq, patchResponse) => {
                         resolve(patchResponse);
+                    }).catch(err => {
+                        reject(err);
                     })
                 }
             }).catch(err => {
