@@ -18,15 +18,16 @@ class IngestClient {
                 url: entityUrl,
                 json: true
             }).then(resp => {
-                if(resp.body['uuid']['uuid']) {
+                if(resp['uuid'] && resp['uuid']['uuid']) {
                     resolve(resp)
                 } else {
                     const uuidPatchPayload = {'uuid' : {'uuid': uuidv4()}};
-                    request.patch({
-                        url: entityUrl,
+                    request({
+                        method: 'PATCH',
+                        body: uuidPatchPayload,
                         json: true,
-                        data: uuidPatchPayload
-                    }).then(patchResponse => {
+                        url: entityUrl
+                    }).then((patchReq, patchResponse) => {
                         resolve(patchResponse);
                     })
                 }
