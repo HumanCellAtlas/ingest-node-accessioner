@@ -20,14 +20,25 @@ class UuidListener {
                 ch.assertQueue(this.properties.vars.UUID_QUEUE, {durable: false}).then(() => {
                     ch.prefetch(this.properties.vars.PREFETCH_COUNT).then(() => {
                         ch.consume(this.properties.vars.UUID_QUEUE, (msg) => {
-                            let callbackLink = JSON.parse(msg.content)['callbackLink'];
-                            this.ingestClient.assignUuid(callbackLink);
+                            this.handle(msg);
                         }, {noAck : true});
                     })
                 })
             })
 
         })
+    }
+
+    handle(msg){
+        let callbackLink = JSON.parse(msg.content)['callbackLink'];
+        console.info("Received message to accession document " + callbackLink);
+
+        this.ingestClient.assignUuid(callbackLink)
+            .then(response => {
+                console.log("Successfully assigned uuid to document " + callbackLink);
+            }).catch(err => {
+                console.warn("Failed to assign uuid to document " + callbackLink + ". Error: " + err);
+        });
     }
 
 }
