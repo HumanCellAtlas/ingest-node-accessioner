@@ -10,8 +10,18 @@ class IngestClient {
         this.ingestUrl = ingestUrl;
     }
 
-    assignUuid(entityCallback){
-        const entityUrl = this.urlFor(entityCallback);
+    assignUuid(shorthandCallbackLink) {
+        const entityUrl = this.urlFor(shorthandCallbackLink);
+        return this.retry(5, this._assignUuid, {'entityUrl': entityUrl}, "Retrying assignUuid...");
+    }
+
+    /**
+     *
+     * @param params - { entityUrl : <url of the entity to assign a uuid>}
+     * @private
+     */
+    _assignUuid(params){
+        const entityUrl = params['entityUrl'];
 
         return new Promise((resolve, reject) => {
             request.get({
@@ -37,6 +47,24 @@ class IngestClient {
                 reject(err);
             })
         });
+    }
+
+    retry(maxRetries, func, args, retryMessage) {
+        return this._retry(0, maxRetries, null, func, args, retryMessage);
+    }
+
+    _retry(attemptsSoFar, maxRetries, prevErr, func, args, retryMessage) {
+        if(attemptsSoFar === maxRetries) {
+            return Promise.reject(prevErr);
+        } else {
+            return func(args)
+                .then(allGood => {return Promise.resolve(allGood)})
+                .catch(err => {
+                    const incAttempts = attemptsSoFar + 1;
+                    console.info(retryMessage + " :: Attempt # " + incAttempts + " out of " + maxRetries);
+                    return this._retry(attemptsSoFar + 1, maxRetries, err, func, args, retryMessage);
+                });
+        }
     }
 
     urlFor(entityCallback) {
