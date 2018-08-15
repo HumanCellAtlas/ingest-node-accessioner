@@ -37,8 +37,8 @@ class IngestClient {
                         body: uuidPatchPayload,
                         json: true,
                         url: entityUrl
-                    }).then((patchReq, patchResponse) => {
-                        resolve(patchResponse);
+                    }).then(resp => {
+                        resolve(resp);
                     }).catch(err => {
                         reject(err);
                     })
