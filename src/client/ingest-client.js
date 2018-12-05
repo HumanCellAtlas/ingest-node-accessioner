@@ -2,8 +2,14 @@
  * Created by rolando on 13/04/2018.
  */
 const uuidv4 = require('uuid/v4');
-const request = require('request-promise');
+const request = require('request-promise').defaults({
+    family: 4,
+    pool: {
+        maxSockets: 10
+    }
+});
 const Promise = require('bluebird');
+
 
 class IngestClient {
     constructor(ingestUrl) {

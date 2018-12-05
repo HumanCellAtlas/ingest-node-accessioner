@@ -11,6 +11,7 @@
     "debug": "~2.6.9",
     "http-errors": "~1.6.2",
     "request": "^2.85.0",
+    "request-defaults": "^1.2.0",
     "request-promise": "^4.2.2",
     "uuid": "^3.2.1"
   }
