@@ -5,7 +5,7 @@ const uuidv4 = require('uuid/v4');
 const request = require('request-promise').defaults({
     family: 4,
     pool: {
-        maxSockets: 10
+        maxSockets: 25
     }
 });
 const Promise = require('bluebird');
