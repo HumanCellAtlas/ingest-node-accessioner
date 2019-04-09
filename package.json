@@ -13,6 +13,7 @@
     "request": "^2.85.0",
     "request-defaults": "^1.2.0",
     "request-promise": "^4.2.2",
+    "cryptiles": ">=4.1.2",
     "uuid": "^3.2.1"
   }
 }
