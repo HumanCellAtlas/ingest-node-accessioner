@@ -10,7 +10,7 @@
     "bluebird": "^3.5.1",
     "debug": "~2.6.9",
     "http-errors": "~1.6.2",
-    "request": "^2.85.0",
+    "request": "^2.88.2",
     "request-defaults": "^1.2.0",
     "request-promise": "^4.2.2",
     "cryptiles": ">=4.1.2",
